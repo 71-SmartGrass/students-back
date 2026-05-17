@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/students_back?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: A!a138497
+
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+      map-underscore-to-camel-case: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.example.students back.mapper: debug
+    com.example.students back.service: debug
+    com.example.students back.controller: debug
