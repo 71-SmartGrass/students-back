@@ -9,7 +9,7 @@ public class Course {
     private Double credit;
     private String teacher;
     private Integer semester; //学期
-    private LocalDateTime creatTime;
+    private LocalDateTime createTime;
 
     public Integer getId() {return id;}
     public void setId(Integer id) {this.id = id;}
@@ -23,6 +23,6 @@ public class Course {
     public void setTeacher(String teacher) {this.teacher = teacher;}
     public Integer getSemester() {return semester;}
     public void setSemester(Integer semester) {this.semester = semester;}
-    public LocalDateTime getCreatTime() {return creatTime;}
-    public void setCreatTime(LocalDateTime creatTime) {this.creatTime = creatTime;}
+    public LocalDateTime getCreateTime() {return creatTime;}
+    public void setCreatTime(LocalDateTime createTime) {this.creatTime = creatTime;}
 }
