@@ -23,6 +23,6 @@ public class Course {
     public void setTeacher(String teacher) {this.teacher = teacher;}
     public Integer getSemester() {return semester;}
     public void setSemester(Integer semester) {this.semester = semester;}
-    public LocalDateTime getCreateTime() {return creatTime;}
-    public void setCreatTime(LocalDateTime createTime) {this.creatTime = creatTime;}
+    public LocalDateTime getCreateTime() {return createTime;}
+    public void setCreateTime(LocalDateTime createTime) {this.createTime = createTime;}
 }
