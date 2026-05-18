@@ -30,9 +30,9 @@ create table if not exists course (
     id int primary key auto_increment,
     course_name varchar(50) not null, -- 课程名称
     course_number varchar(20) not null unique, -- 课程编号
-    credit int default 0, -- 学分 默认0
+    credit double default 0, -- 学分 默认0
     teacher varchar(50) not null, -- 教师
-    semester varchar(10) default '0', -- 学期 默认0
+    semester int default '0', -- 学期 默认0
     created_at datetime default current_timestamp -- 创建时间
 );
 
@@ -41,10 +41,10 @@ create table if not exists score (
     id int primary key auto_increment,
     student_id int not null, -- 学生id（关联student表的id）
     course_id int not null, -- 课程id（关联course表的id）
-    score int default 0, -- 成绩 默认0
+    score double default 0, -- 成绩 默认0
     created_at datetime default current_timestamp, -- 创建时间
     foreign key (student_id) references student(id) on delete cascade on update cascade,
     foreign key (course_id) references course(id) on delete cascade on update cascade,
     check (score between 0 and 100),
-    unique(student_id, course_id)
+    unique(student_id, course_id) -- 学生和课程的组合唯一
 );
