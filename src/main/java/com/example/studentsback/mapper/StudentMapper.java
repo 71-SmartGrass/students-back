@@ -14,13 +14,11 @@ public interface StudentMapper {
                               @Param("name") String name,
                               @Param("studentNumber") String studentNumber);
 
-    long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber);
-    int insertStudent(Student student);
-    int updateStudent(Student student);
-    int deleteStudent(int id);
-    Student getStudentById(int id);
-    List<Student> getAllStudents();
-
-    // 批量删除
-    int deleteBatch(@Param("ids") List<Integer> ids);
+    long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber);//查询总数
+    int insertStudent(Student student);//插入学生
+    int updateStudent(Student student);//更新学生
+    int deleteStudent(int id);//通过id删除学生
+    Student getStudentById(int id);//通过id查询学生
+    List<Student> getAllStudents();//查询所有学生
+    int deleteBatch(@Param("ids") List<Integer> ids); // 批量删除
 }
