@@ -1,6 +1,6 @@
-CREATE  DATABASE  IF NOT EXISTS students_back default  character set utf8mb4 collate  utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS students default character set utf8mb4 collate utf8mb4_unicode_ci;
 
-USE students_back;
+USE students;
 
 /* 用户表 */
 create table if not exists users (
@@ -16,7 +16,7 @@ create table if not exists student (
     id int primary key auto_increment,
     student_number varchar(20) not null unique,
     name varchar(50) not null unique,
-    gender varchar(10) default '未知',
+    gender varchar(10),
     class_name varchar(100),
     phone varchar(20),
     email varchar(100),

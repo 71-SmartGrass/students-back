@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface StudentMapper {
-    // XML 映射的方法
+    // XML 映射
     List<Student> getStudents(@Param("offset")  int offset,
                               @Param("pageSize") int pageSize,
                               @Param("name") String name,

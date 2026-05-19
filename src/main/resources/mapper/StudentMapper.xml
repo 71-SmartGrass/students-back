@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studentsback.mapper.StudentMapper">
+
+    <!-- 分页条件查询 -->
+    <select id="getStudents" resultType="com.example.studentsback.model.entity.Student">
+        select id, student_number, name, gender, class_name, phone, email, avatar, create_time, update_time
+        from student
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <if test="studentNumber != null and studentNumber != ''">
+                and student_number like concat('%', #{studentNumber}, '%')
+            </if>
+        </where>
+        order by id desc
+        limit #{offset}, #{pageSize}
+    </select>
+
+    <!-- 查询总记录数（和上面相同的条件） -->
+    <select id="getTotalCount" resultType="long">
+        select count(*)
+        from student
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name}, '%')
+            </if>
+            <if test="studentNumber != null and studentNumber != ''">
+                and student_number like concat('%', #{studentNumber}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询所有学生 -->
+    <select id="getAllStudents" resultType="com.example.studentsback.model.entity.Student">
+        select id, student_number, name, gender, class_name, phone, email, avatar, create_time, update_time
+        from student
+        order by id desc
+    </select>
+
+    <!-- 根据 id 查询 -->
+    <select id="getStudentById" resultType="com.example.studentsback.model.entity.Student">
+        select id, student_number, name, gender, class_name, phone, email, avatar, create_time, update_time
+        from student
+        where id = #{id}
+    </select>
+
+    <!-- 新增学生 -->
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="id">
+        insert into student(student_number, name, gender, class_name, phone, email, avatar)
+        values(#{studentNumber}, #{name}, #{gender}, #{className}, #{phone}, #{email}, #{avatar})
+    </insert>
+
+    <!-- 更新学生 -->
+    <update id="updateStudent">
+        update student
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="className != null">class_name = #{className},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 删除学生 -->
+    <delete id="deleteStudent">
+        delete from student where id = #{id}
+    </delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteBatch">
+        delete from student where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
