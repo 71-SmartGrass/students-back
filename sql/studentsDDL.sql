@@ -15,7 +15,7 @@ create table if not exists users (
 create table if not exists student (
     id int primary key auto_increment,
     student_number varchar(20) not null unique,
-    name varchar(50) not null unique,
+    name varchar(50) not null,
     gender varchar(10),
     class_name varchar(100),
     phone varchar(20),
@@ -32,7 +32,7 @@ create table if not exists course (
     course_number varchar(20) not null unique,
     credit double default 0,
     teacher varchar(50) not null,
-    semester int default '0',
+    semester int default 0,
     created_time datetime default current_timestamp
 );
 
