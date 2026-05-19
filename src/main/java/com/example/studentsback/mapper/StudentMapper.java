@@ -8,15 +8,19 @@ import java.util.List;
 
 @Mapper
 public interface StudentMapper {
-    List<Student> getStudents(@Param("offset")  int offset, // 偏移量
-                              @Param("pageSize") int pageSize, // 每页数量
-                              @Param("name") String name, // 姓名
-                              @Param("studentNumber") String studentNumber); // 学号
+    // XML 映射的方法
+    List<Student> getStudents(@Param("offset")  int offset,
+                              @Param("pageSize") int pageSize,
+                              @Param("name") String name,
+                              @Param("studentNumber") String studentNumber);
 
-    long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber); // 获取总记录数
-    int insertStudent(Student student); // 插入学生
-    int updateStudent(Student student); // 更新学生
-    int deleteStudent(int id); // 删除学生
-    Student getStudentById(int id); // 根据ID查询学生
-    List<Student> getAllStudents(); // 查询所有学生
+    long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber);
+    int insertStudent(Student student);
+    int updateStudent(Student student);
+    int deleteStudent(int id);
+    Student getStudentById(int id);
+    List<Student> getAllStudents();
+
+    // 批量删除
+    int deleteBatch(@Param("ids") List<Integer> ids);
 }
