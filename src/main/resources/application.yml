@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/students_back?useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/students?useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: A!a138497
 

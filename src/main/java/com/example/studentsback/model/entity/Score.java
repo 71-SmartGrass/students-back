@@ -7,7 +7,7 @@ public class Score {
     private Integer studentId;
     private Integer courseIdId;
     private Double score;
-    private LocalDateTime creatTime;
+    private LocalDateTime createTime;
 
     //外键
     private String studentName;
@@ -26,8 +26,8 @@ public class Score {
     public void setCourseIdId(Integer courseIdId) {this.courseIdId = courseIdId;}
     public Double getScore() {return score;}
     public void setScore(Double score) {this.score = score;}
-    public LocalDateTime getCreatTime() {return creatTime;}
-    public void setCreatTime(LocalDateTime creatTime) {this.creatTime = creatTime;}
+    public LocalDateTime getCreateTime() {return createTime;}
+    public void setCreateTime(LocalDateTime createTime) {this.createTime = createTime;}
     public String getStudentName() {return studentName;}
     public void setStudentName(String studentName) {this.studentName = studentName;}
     public String getStudentNumber() {return studentNumber;}
