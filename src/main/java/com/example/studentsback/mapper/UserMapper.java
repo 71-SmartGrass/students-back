@@ -1,9 +1,7 @@
 package com.example.studentsback.mapper;
 
 import com.example.studentsback.model.entity.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
