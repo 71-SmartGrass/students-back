@@ -36,21 +36,22 @@ public interface StudentMapper {
             "</script>")
     long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber);
 
-    // 3. 插入学生
-    @Insert("INSERT INTO student(student_number, name, gender, class_name, phone, avatar) " +
-            "VALUES(#{studentNumber}, #{name}, #{gender}, #{className}, #{phone}, #{avatar})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    int insertStudent(Student student);
+   // 3. 插入学生
+@Insert("INSERT INTO student(student_number, name, gender, class_name, phone, email, avatar) " +
+        "VALUES(#{studentNumber}, #{name}, #{gender}, #{className}, #{phone}, #{email}, #{avatar})")
+@Options(useGeneratedKeys = true, keyProperty = "id")
+int insertStudent(Student student);
 
-    // 4. 更新学生
-    @Update("UPDATE student SET " +
-            "name = #{name}, " +
-            "gender = #{gender}, " +
-            "class_name = #{className}, " +
-            "phone = #{phone}, " +
-            "avatar = #{avatar} " +
-            "WHERE id = #{id}")
-    int updateStudent(Student student);
+// 4. 更新学生
+@Update("UPDATE student SET " +
+        "name = #{name}, " +
+        "gender = #{gender}, " +
+        "class_name = #{className}, " +
+        "phone = #{phone}, " +
+        "email = #{email}, " +
+        "avatar = #{avatar} " +
+        "WHERE id = #{id}")
+int updateStudent(Student student);
 
     // 5. 删除学生
     @Delete("DELETE FROM student WHERE id = #{id}")
