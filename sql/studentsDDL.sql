@@ -19,7 +19,6 @@ create table if not exists student (
     gender varchar(10),
     class_name varchar(100),
     phone varchar(20),
-    email varchar(100),
     avatar varchar(255),
     created_time datetime default current_timestamp,
     updated_time datetime default current_timestamp on update current_timestamp
