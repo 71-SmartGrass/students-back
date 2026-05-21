@@ -9,6 +9,6 @@ public class GlobalExceptionHandler {
     //处理学生不存在异常
     @ExceptionHandler(Exception.class)
     public Result<Void> handleException(Exception ex){
-        return Result.error(ex.getMessage());
+        return Result.error(500, ex.getMessage());
     }
 }
