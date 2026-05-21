@@ -7,7 +7,7 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
 
-    // 1. 分页条件查询
+    //分页条件查询 
     @Select("<script>" +
             "SELECT * FROM student WHERE 1=1" +
             "<if test='name != null and name != \"\"'>" +
@@ -19,12 +19,14 @@ public interface StudentMapper {
             " ORDER BY id DESC" +
             " LIMIT #{offset}, #{pageSize}" +
             "</script>")
-    List<Student> getStudents(@Param("offset") int offset,
-                              @Param("pageSize") int pageSize,
-                              @Param("name") String name,
-                              @Param("studentNumber") String studentNumber);
+    List<Student> getStudents(
+            @Param("offset") int offset,
+            @Param("pageSize") int pageSize,
+            @Param("name") String name,
+            @Param("studentNumber") String studentNumber
+    );
 
-    // 2. 查询总数
+    //查询总数
     @Select("<script>" +
             "SELECT COUNT(*) FROM student WHERE 1=1" +
             "<if test='name != null and name != \"\"'>" +
@@ -36,36 +38,36 @@ public interface StudentMapper {
             "</script>")
     long getTotalCount(@Param("name") String name, @Param("studentNumber") String studentNumber);
 
-   // 3. 插入学生
-@Insert("INSERT INTO student(student_number, name, gender, class_name, phone, email, avatar) " +
-        "VALUES(#{studentNumber}, #{name}, #{gender}, #{className}, #{phone}, #{email}, #{avatar})")
-@Options(useGeneratedKeys = true, keyProperty = "id")
-int insertStudent(Student student);
+    //插入学生
+    @Insert("INSERT INTO student(student_number, name, gender, class_name, phone, email, avatar) " +
+            "VALUES(#{studentNumber}, #{name}, #{gender}, #{className}, #{phone}, #{email}, #{avatar})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    int insertStudent(Student student);
 
-// 4. 更新学生
-@Update("UPDATE student SET " +
-        "name = #{name}, " +
-        "gender = #{gender}, " +
-        "class_name = #{className}, " +
-        "phone = #{phone}, " +
-        "email = #{email}, " +
-        "avatar = #{avatar} " +
-        "WHERE id = #{id}")
-int updateStudent(Student student);
+    //更新学生
+    @Update("UPDATE student SET " +
+            "name = #{name}, " +
+            "gender = #{gender}, " +
+            "class_name = #{className}, " +
+            "phone = #{phone}, " +
+            "email = #{email}, " +
+            "avatar = #{avatar} " +
+            "WHERE id = #{id}")
+    int updateStudent(Student student);
 
-    // 5. 删除学生
+    //删除学生
     @Delete("DELETE FROM student WHERE id = #{id}")
     int deleteStudent(int id);
 
-    // 6. 根据ID查询学生
+    //根据ID查询学生
     @Select("SELECT * FROM student WHERE id = #{id}")
     Student getStudentById(int id);
 
-    // 7. 查询所有学生
+    //查询所有学生
     @Select("SELECT * FROM student ORDER BY id DESC")
     List<Student> getAllStudents();
 
-    // 8. 批量删除
+    //批量删除
     @Delete("<script>" +
             "DELETE FROM student WHERE id IN " +
             "<foreach collection='ids' item='id' open='(' separator=',' close=')'>" +

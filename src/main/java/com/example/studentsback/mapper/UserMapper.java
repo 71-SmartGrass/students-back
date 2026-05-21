@@ -8,8 +8,8 @@ public interface UserMapper {
     // 根据用户名查询用户
     @Select("select * from users where username = #{username}")
     User selectByUsername(@Param("username") String username);
-    
-     // 插入用户
+
+    // 插入用户
     @Insert("INSERT INTO users(username, password, role) VALUES(#{username}, #{password}, #{role})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(User user);

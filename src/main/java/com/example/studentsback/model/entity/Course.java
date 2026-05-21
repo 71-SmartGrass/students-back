@@ -1,7 +1,12 @@
 package com.example.studentsback.model.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class Course {
     private Integer id;
     private String courseName;
@@ -11,18 +16,4 @@ public class Course {
     private Integer semester; //学期
     private LocalDateTime createTime;
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
-    public String getCourseName() {return courseName;}
-    public void setCourseName(String courseName) {this.courseName = courseName;}
-    public String getCourseNumber() {return courseNumber;}
-    public void setCourseNumber(String courseNumber) {this.courseNumber = courseNumber;}
-    public Double getCredit() {return credit;}
-    public void setCredit(Double credit) {this.credit = credit;}
-    public String getTeacher() {return teacher;}
-    public void setTeacher(String teacher) {this.teacher = teacher;}
-    public Integer getSemester() {return semester;}
-    public void setSemester(Integer semester) {this.semester = semester;}
-    public LocalDateTime getCreateTime() {return createTime;}
-    public void setCreateTime(LocalDateTime createTime) {this.createTime = createTime;}
 }
