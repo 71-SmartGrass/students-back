@@ -15,6 +15,6 @@ mybatis:
 
 logging:
   level:
-    com.example.students back.mapper: debug
-    com.example.students back.service: debug
-    com.example.students back.controller: debug
+    com.example.studentsback.mapper: debug
+    com.example.studentsback.service: debug
+    com.example.studentsback.controller: debug

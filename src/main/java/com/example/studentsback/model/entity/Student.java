@@ -9,7 +9,7 @@ public class Student {
     private String gender;
     private String className;
     private String phone;
-    private String email;
+    private String email; 
     private String avatar; // 头像
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
@@ -26,8 +26,8 @@ public class Student {
     public void setClassName(String className) { this.className = className ;}
     public String getPhone() { return phone ;}
     public void setPhone(String phone) { this.phone = phone ;}
-    public String getEmail() { return email ;}
-    public void setEmail(String email) { this.email = email ;}
+     public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
     public String getAvatar() { return avatar ;}
     public void setAvatar(String avatar) { this.avatar = avatar ;}
     public LocalDateTime getCreateTime() { return createTime ;}
