@@ -64,7 +64,7 @@ public interface StudentMapper {
     Student getStudentById(int id);
 
     //查询所有学生
-    @Select("SELECT * FROM student ORDER BY id DESC")
+    @Select("SELECT * FROM student ORDER BY id DESC")//按ID降序查询
     List<Student> getAllStudents();
 
     //批量删除
@@ -74,5 +74,9 @@ public interface StudentMapper {
             "#{id}" +
             "</foreach>" +
             "</script>")
-    int deleteBatch(@Param("ids") List<Integer> ids);
+    int deleteBatchStudents(@Param("ids") List<Integer> ids);
+
+    //根据学号查询学生
+    @Select("SELECT * FROM student WHERE student_number = #{studentNumber}")
+    Student getStudentByStudentNumber(String studentNumber);
 }
