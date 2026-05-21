@@ -6,18 +6,18 @@ import java.util.List;
 
 @Mapper
 public interface CourseMapper {
-    
-    // 1. 插入课程
+
+    //插入课程
     @Insert("INSERT INTO course(course_name, course_number, credit, teacher, semester) " +
             "VALUES(#{courseName}, #{courseNumber}, #{credit}, #{teacher}, #{semester})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Course course);
-    
-    // 2. 根据ID删除课程
+
+    //根据ID删除课程
     @Delete("DELETE FROM course WHERE id = #{id}")
     int deleteById(Integer id);
-    
-    // 3. 批量删除课程
+
+    //批量删除课程
     @Delete("<script>" +
             "DELETE FROM course WHERE id IN " +
             "<foreach collection='ids' item='id' open='(' separator=',' close=')'>" +
@@ -25,8 +25,8 @@ public interface CourseMapper {
             "</foreach>" +
             "</script>")
     int deleteBatch(@Param("ids") List<Integer> ids);
-    
-    // 4. 更新课程
+
+    //更新课程
     @Update("UPDATE course SET " +
             "course_name = #{courseName}, " +
             "course_number = #{courseNumber}, " +
@@ -35,8 +35,8 @@ public interface CourseMapper {
             "semester = #{semester} " +
             "WHERE id = #{id}")
     int update(Course course);
-    
-    // 5. 动态更新（只更新非空字段）
+
+    //动态更新（只更新非空字段）
     @Update("<script>" +
             "UPDATE course " +
             "<set>" +
@@ -49,20 +49,20 @@ public interface CourseMapper {
             "WHERE id = #{id}" +
             "</script>")
     int updateSelective(Course course);
-    
-    // 6. 根据ID查询课程
+
+    //根据ID查询课程
     @Select("SELECT * FROM course WHERE id = #{id}")
     Course selectById(Integer id);
-    
-    // 7. 根据课程编号查询（唯一）
+
+    //根据课程编号查询（唯一）
     @Select("SELECT * FROM course WHERE course_number = #{courseNumber}")
     Course selectByCourseNumber(String courseNumber);
-    
-    // 8. 查询所有课程
+
+    //查询所有课程
     @Select("SELECT * FROM course ORDER BY id DESC")
     List<Course> selectAll();
-    
-    // 9. 条件查询（根据课程名、教师或课程编号）
+
+    //条件查询（根据课程名、教师或课程编号）
     @Select("<script>" +
             "SELECT * FROM course WHERE 1=1" +
             "<if test='keyword != null and keyword != \"\"'>" +
@@ -73,16 +73,16 @@ public interface CourseMapper {
             " ORDER BY id DESC" +
             "</script>")
     List<Course> selectByCondition(@Param("keyword") String keyword);
-    
-    // 10. 分页查询
+
+    //分页查询
     @Select("SELECT * FROM course ORDER BY id DESC LIMIT #{offset}, #{size}")
     List<Course> selectByPage(@Param("offset") int offset, @Param("size") int size);
-    
-    // 11. 查询总数
+
+    //查询总数
     @Select("SELECT COUNT(*) FROM course")
     Long selectCount();
-    
-    // 12. 条件查询总数
+
+    //条件查询总数
     @Select("<script>" +
             "SELECT COUNT(*) FROM course WHERE 1=1" +
             "<if test='keyword != null and keyword != \"\"'>" +
@@ -92,16 +92,16 @@ public interface CourseMapper {
             "</if>" +
             "</script>")
     Long selectCountByCondition(@Param("keyword") String keyword);
-    
-    // 13. 根据学期查询课程
+
+    //根据学期查询课程
     @Select("SELECT * FROM course WHERE semester = #{semester} ORDER BY id DESC")
     List<Course> selectBySemester(Integer semester);
-    
-    // 14. 根据教师查询课程
+
+    //根据教师查询课程
     @Select("SELECT * FROM course WHERE teacher = #{teacher} ORDER BY id DESC")
     List<Course> selectByTeacher(String teacher);
-    
-    // 15. 检查课程编号是否已存在
+
+    //检查课程编号是否已存在
     @Select("SELECT COUNT(*) FROM course WHERE course_number = #{courseNumber}")
     int checkExistByCourseNumber(String courseNumber);
 }
