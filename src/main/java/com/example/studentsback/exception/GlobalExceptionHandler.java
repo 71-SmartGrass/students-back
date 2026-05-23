@@ -1,6 +1,6 @@
 package com.example.studentsback.exception;
 
-import com.example.studentsback.model.Result;
+import com.example.studentsback.common.Result;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

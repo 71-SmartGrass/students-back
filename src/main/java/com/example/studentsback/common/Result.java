@@ -1,4 +1,4 @@
-package com.example.studentsback.model;
+package com.example.studentsback.common;
 
 public class Result<T> {
     /*
@@ -8,13 +8,13 @@ public class Result<T> {
     400 请求参数错误
      */
     private Integer code; // 状态码
-    private String msg; // 提示信息 
+    private String message; // 提示信息
     private T data; // 数据
 
-    private Result(Integer code, String msg, T data) {
+    private Result(Integer code, String message, T data) {
         this.code = code;
         this.data = data;
-        this.msg = msg;
+        this.message = message;
     }
     
     //success && data != null
@@ -39,6 +39,6 @@ public class Result<T> {
 
     //getters
     public Integer getCode() {return code;}
-    public String getMsg() {return msg;}
+    public String getMessage() {return message;}
     public T getData() {return data;}
 }   
