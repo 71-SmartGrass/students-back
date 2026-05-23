@@ -1,6 +1,6 @@
 package com.example.studentsback.controller;
 
-import com.example.studentsback.model.Result;
+import com.example.studentsback.common.Result;
 import com.example.studentsback.model.entity.Student;
 import com.example.studentsback.service.StudentService;
 import org.springframework.web.bind.annotation.*;
