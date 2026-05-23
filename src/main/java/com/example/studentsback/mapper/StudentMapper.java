@@ -79,4 +79,8 @@ public interface StudentMapper {
     //根据学号查询学生
     @Select("SELECT * FROM student WHERE student_number = #{studentNumber}")
     Student getStudentByStudentNumber(String studentNumber);
+
+    //更新头像
+    @Update("UPDATE student SET avatar = #{avatar} WHERE id = #{id}")
+    int updateAvatar(@Param("id") Integer id, @Param("avatar") String avatar);
 }

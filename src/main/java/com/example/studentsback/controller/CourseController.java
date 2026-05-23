@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 课程管理控制器
+ *
+ * 提供课程增删改查 REST API，路径前缀为 /api/courses。
+ * 支持分页查询、关键词搜索、按学期/教师筛选等高级查询。
+ * 课程编号（course_number）具有唯一约束，新增时需校验。
+ */
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {

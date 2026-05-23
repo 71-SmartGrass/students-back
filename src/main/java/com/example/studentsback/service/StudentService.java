@@ -22,4 +22,5 @@ public interface StudentService {
     void updateStudent(Student student); //更新学生
     void deleteStudent(int id); //删除学生
     void deleteBatchStudents(List<Integer> ids); //批量删除学生 ids->学生ID列表
+    void updateAvatar(Integer id, String avatar); //更新头像
 }

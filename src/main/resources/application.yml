@@ -6,6 +6,10 @@ spring:
     url: jdbc:mysql://localhost:3306/students?useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: A!a138497
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
 
 mybatis:
     mapper-locations: classpath:mapper/*.xml
@@ -18,3 +22,11 @@ logging:
     com.example.studentsback.mapper: debug
     com.example.studentsback.service: debug
     com.example.studentsback.controller: debug
+
+# JWT 密钥 — HMAC-SHA256 要求至少 256 位（32 字节），生产环境请替换为安全随机串
+jwt:
+  secret: your-secret-key-here-at-least-256-bits-long-for-hs256
+
+file:
+  upload:
+    path: ./uploads

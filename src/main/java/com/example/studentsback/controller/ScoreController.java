@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 成绩管理控制器
+ *
+ * 提供成绩增删改查 REST API，路径前缀为 /api/scores。
+ * 所有查询类接口均通过三表 JOIN（score + student + course）返回完整的关联信息。
+ * 统计类接口返回均分、最高分、最低分、及格率、优秀率、分数段分布。
+ * 组合查询接口支持按学生和课程同时筛选。
+ */
 @RestController
 @RequestMapping("/api/scores")
 public class ScoreController {
@@ -57,6 +65,19 @@ public class ScoreController {
     }
 
     // ========== 查询 ==========
+
+    /**
+     * 组合条件查询成绩
+     *
+     * studentId 和 courseId 均为可选参数，不传则查询全部。
+     * 结果按成绩 ID 降序排列。
+     */
+    @GetMapping("/search")
+    public Result<List<Score>> search(@RequestParam(required = false) Integer studentId,
+                                      @RequestParam(required = false) Integer courseId) {
+        List<Score> list = scoreService.selectByCondition(studentId, courseId);
+        return Result.success(list);
+    }
 
     @GetMapping("/student/{studentId}")
     public Result<List<Score>> getByStudentId(@PathVariable Integer studentId) {

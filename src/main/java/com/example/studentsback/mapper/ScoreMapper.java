@@ -49,6 +49,28 @@ public interface ScoreMapper {
             "WHERE s.student_id = #{studentId}")
     List<Score> selectByStudentId(Integer studentId);
 
+    // 组合条件查询成绩（studentId 和 courseId 均可选）
+    @Select("<script>" +
+            "SELECT " +
+            "s.id, s.student_id, s.course_id, s.score, s.create_time as createTime, " +
+            "stu.name as studentName, " +
+            "stu.student_number as studentNumber, " +
+            "c.course_name as courseName, " +
+            "c.course_number as courseNumber, " +
+            "c.credit as credit, " +
+            "c.teacher as teacher, " +
+            "c.semester as semester " +
+            "FROM score s " +
+            "LEFT JOIN student stu ON s.student_id = stu.id " +
+            "LEFT JOIN course c ON s.course_id = c.id " +
+            "WHERE 1=1" +
+            "<if test='studentId != null'> AND s.student_id = #{studentId}</if>" +
+            "<if test='courseId != null'> AND s.course_id = #{courseId}</if>" +
+            " ORDER BY s.id DESC" +
+            "</script>")
+    List<Score> selectByCondition(@Param("studentId") Integer studentId,
+                                  @Param("courseId") Integer courseId);
+
     //根据课程ID查询成绩（关联学生信息）
     @Select("SELECT " +
             "s.id, s.student_id, s.course_id, s.score, s.create_time as createTime, " +
