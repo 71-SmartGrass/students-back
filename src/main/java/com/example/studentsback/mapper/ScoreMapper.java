@@ -119,7 +119,7 @@ public interface ScoreMapper {
             "COUNT(CASE WHEN score >= 60 AND score < 70 THEN 1 END) as pass, " +
             "COUNT(CASE WHEN score < 60 THEN 1 END) as fail " +
             "FROM score WHERE course_id = #{courseId}")
-    Map<String, Object> selectScoreDistribution(Integer courseId);
+    Map<String, Integer> selectScoreDistribution(Integer courseId);
 
     //查询学生的所有成绩统计
     @Select("SELECT " +

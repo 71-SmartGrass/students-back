@@ -1,6 +1,6 @@
 package com.example.studentsback.controller;
 
-import com.example.studentsback.common.Result;
+import com.example.studentsback.model.Result;
 import com.example.studentsback.model.entity.Student;
 import com.example.studentsback.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +20,10 @@ public class StudentController {
     // 分页查询学生列表
     @GetMapping
     public Result<List<Student>> list(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int pageSize,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String studentNumber
+        @RequestParam(defaultValue = "1") int page,
+        @RequestParam(defaultValue = "10") int pageSize,
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String studentNumber
     ){
         int offset = (page - 1) * pageSize; // 偏移量 从0开始
         List<Student> students = studentService.getStudents(offset, pageSize, name, studentNumber);
@@ -33,8 +33,8 @@ public class StudentController {
     // count 查询学生总数
     @GetMapping("/count")
     public Result<Long> count(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String studentNumber
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String studentNumber
     ){
         long count = studentService.getTotalCount(name, studentNumber);
         return Result.success(count);
